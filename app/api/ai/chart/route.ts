@@ -1,6 +1,7 @@
 import { dashboardSchema } from "@/app/schemas/dashboard"
+import { RateLimiter } from "@/lib/rate-limiter"
 import OpenAI from "openai"
-import { OAIStream, withResponseModel } from "../../../../../ai-ui/public-packages/zod-stream"
+import { OAIStream, withResponseModel } from "zod-stream"
 
 const oai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"] ?? undefined,
@@ -14,6 +15,13 @@ interface IRequest {
 }
 
 export async function POST(request: Request) {
+  const rateLimit = await RateLimiter(request)
+
+  if(!rateLimit || rateLimit?.isLimited) {
+    return new Response("Daily limit exceeded", {
+      status: 429,
+    })
+  }
   const { messages } = (await request.json()) as IRequest
 
 

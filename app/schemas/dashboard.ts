@@ -15,4 +15,4 @@ export const dashboardSchema = z.object({
       secondary_value: z.string().optional().describe(" an optional secondary value, ideally a unit of measure, but could be descriptive, a diff vs another time period etc..")
     }).describe("always include the unit of measure")
   )
-});
+})
