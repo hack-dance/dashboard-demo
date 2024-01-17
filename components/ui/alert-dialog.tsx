@@ -9,11 +9,10 @@ const AlertDialog = AlertDialogPrimitive.Root
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 
 const AlertDialogPortal = ({
-  className,
   children,
   ...props
 }: AlertDialogPrimitive.AlertDialogPortalProps) => (
-  <AlertDialogPrimitive.Portal className={cn(className)} {...props}>
+  <AlertDialogPrimitive.Portal {...props}>
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
       {children}
     </div>
@@ -27,7 +26,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
-      "bg-background/80 animate-in fade-in fixed inset-0 z-50 backdrop-blur-sm transition-opacity",
+      "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity animate-in fade-in",
       className
     )}
     {...props}
@@ -45,7 +44,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        "bg-background animate-in fade-in-90 slide-in-from-bottom-10 sm:zoom-in-90 sm:slide-in-from-bottom-0 fixed z-50 grid w-full max-w-lg scale-100 gap-4 border p-6 opacity-100 shadow-lg sm:rounded-lg md:w-full",
+        "fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-background p-6 opacity-100 shadow-lg animate-in fade-in-90 slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
         className
       )}
       {...props}
@@ -85,7 +84,7 @@ const AlertDialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Description
     ref={ref}
-    className={cn("text-muted-foreground text-sm", className)}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ))
