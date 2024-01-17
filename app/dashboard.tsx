@@ -45,8 +45,8 @@ export function Dashboard() {
   
     return !submitted ? (<>
       <div>
-        <Textarea className="w-full" defaultValue={prompt} />
-        <Button onClick={submitMessage}>Generate dashboard</Button>
+        <Textarea className="mb-12 min-h-[50vh] w-full" defaultValue={prompt} />
+        <Button onClick={submitMessage}>Generate report</Button>
       </div>
       </>) : (
     <>
@@ -71,7 +71,7 @@ export function Dashboard() {
   <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
     <Card className="col-span-4">
       <CardHeader>
-        <CardTitle>Overview</CardTitle>
+        <CardTitle>{data?.timeSeriesChartName ?? ""}</CardTitle>
       </CardHeader>
       <CardContent className="pl-2">
         <Overview data={data?.timeSeries ?? []} />

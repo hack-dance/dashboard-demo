@@ -20,14 +20,16 @@ export async function POST(request: Request) {
   const params = withResponseModel({
     response_model: { schema: dashboardSchema, name: "Metrics" },
     params: {
+      temperature: 0.2,
+      seed: 1,
       messages: [
         {
-          content: "you are tasked with extracting metrics from raw text - you will try to build one time series and up to 5 individual static metrics.",
+          content: "you are tasked with extracting metrics from raw text - you will try to build one time series with useful and valid data - and up to 8 individual static metrics.",
           role: "system"
         },
         ...messages
       ],
-      model: "gpt-4",
+      model: "gpt-4-1106-preview",
       stream: true
     },
     mode: "TOOLS",
