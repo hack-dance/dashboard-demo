@@ -62,5 +62,19 @@ export const classification = z.object({
           Each idea should be a separate and distinct thought or idea. It is its own entity.`
       }
     )
+    .array(),
+
+  follow_ups: z
+    .object(
+      {
+        follow_up: z.string({ description: "What is the follow up about?" }),
+        due_date: z.date({ description: "When is the follow up due?" }),
+        completed: z.boolean({ description: "Is the follow up completed?" })
+      },
+      {
+        description:
+          "Knowing the context of the content when would and what would be a good time to follow up?"
+      }
+    )
     .array()
 })
