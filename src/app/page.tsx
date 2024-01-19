@@ -3,6 +3,7 @@
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+import { ContentAnalysis } from "./content-analysis"
 import { Dashboard } from "./dashboard"
 
 export default function page() {
@@ -12,12 +13,13 @@ export default function page() {
         <Tabs defaultValue="overview" className="space-y-4">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics" disabled>
-              Analytics
-            </TabsTrigger>
+            <TabsTrigger value="parser">Content Parser</TabsTrigger>
           </TabsList>
           <TabsContent value="overview" className="space-y-4">
             <Dashboard />
+          </TabsContent>
+          <TabsContent value="parser" className="space-y-4">
+            <ContentAnalysis />
           </TabsContent>
         </Tabs>
       </div>
