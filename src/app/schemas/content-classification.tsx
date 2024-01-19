@@ -46,20 +46,20 @@ export const classification = z.object({
       }
     )
     .array(),
-  ideas: z
+  insights: z
     .object(
       {
-        topic: z.string({ description: "What is the thought about?" }),
+        topic: z.string({ description: "What is the insight about?" }),
         detailed_description: z.string({
-          description: "What is the though about in more thorough detail?"
+          description: "What is the insight about in more thorough detail?"
         }),
         date: z.string({ description: "When was this thought had?" }) // zodDate not supported error?
         // related: z.string({ description: "What other thoughts are related to this one?" }).nullable() THIS SHOULD CALL ANOTHER FUNCTION TO FIND RELATED NOTES!
       },
       {
-        description: `Is there a idea or thought in this piece of content that we should be aware of?
+        description: `Is there a insight in this piece of content that the reader should be aware of?
 
-          Each idea should be a separate and distinct thought or idea. It is its own entity.`
+          Each insight should be a separate and distinct thought or idea.`
       }
     )
     .array(),

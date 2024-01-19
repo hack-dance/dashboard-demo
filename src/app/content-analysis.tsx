@@ -106,8 +106,8 @@ export const ContentAnalysis = () => {
           <CardTitle>Ideas</CardTitle>
         </CardHeader>
         <CardContent>
-          {data.ideas ? (
-            data.ideas.map((idea, i) => (
+          {data.insights ? (
+            data.insights.map((idea, i) => (
               <div key={i} className="py-2">
                 <h2 className="text-lg pb-2">{idea.topic}</h2>
                 <p className="pl-2">{idea.detailed_description}</p>
